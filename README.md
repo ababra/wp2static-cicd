@@ -1,0 +1,1 @@
+docker run -it --entrypoint "sh" docker:stable-git

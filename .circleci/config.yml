@@ -1,0 +1,18 @@
+version: 2.1
+
+executors:
+  wp-executor:
+    docker:
+      - image: docker:stable-git
+
+jobs:
+  build:
+    executor: wp-executor
+    steps:
+      - setup_remote_docker:
+          version: 18.03.1-ce
+      - run:
+          name: Restore WordPress
+          command: |
+            git clone -b v2-official-docker-wp https://github.com/easypath/wordpress-docker.git
+            cd wordpress-docker && sh wordpress-docker.sh
